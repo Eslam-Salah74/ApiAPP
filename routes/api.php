@@ -21,5 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // Return All Posts
 Route::get('posts',[PostController::class,'index'])->name('posts');
+// Return One Post
+Route::get('post/{id}',[PostController::class,'show'])->name('post');
 
 
