@@ -41,10 +41,10 @@ class PostController extends Controller
     // Return Post Id Using Resource
     public function show($id)
     {
-        $post = new PostResource(Post::find($id));
+        $post = $post = Post::find($id);
         if($post)
         {
-            return $this->apiResponse($post ,200,'Ok');
+            return $this->apiResponse(new PostResource($post) ,200,'Ok');
         }
         else
         {
