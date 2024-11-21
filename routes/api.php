@@ -21,7 +21,15 @@ use Illuminate\Support\Facades\Route;
 
 // Return All Posts
 Route::get('posts',[PostController::class,'index'])->name('posts');
+// Return All Posts Using Resource
+Route::get('postsResource',[PostController::class,'postsResource'])->name('postsResource');
 // Return One Post
 Route::get('post/{id}',[PostController::class,'show'])->name('post');
+// Return One Post Using Resource
+Route::get('postResource/{id}',[PostController::class,'postResource'])->name('post');
+
+
+// Store Data
+Route::post('store',[PostController::class,'store'])->name('store');
 
 

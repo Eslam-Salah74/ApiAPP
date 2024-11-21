@@ -6,49 +6,45 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
+use App\Repository\posts\PostRepositoryInterface;
+
 
 class PostController extends Controller
 {
-    use ApiResponseTrait;
+    protected $Post;
 
-    // public function index()
-    // {
-    //     $posts = Post::all();
-
-    //     return $this->apiResponse($posts ,200,'Ok');
-    // }
-    // Return All Posts By Resource
-    public function index()
-    {
-        $posts = PostResource::collection(Post::all());
-
-        return $this->apiResponse($posts ,200,'Ok');
+    public function __construct(PostRepositoryInterface $Post) {
+        $this->Post = $Post;
     }
 
-    // public function show($id)
-    // {
-    //     $post = Post::find($id);
-    //     if($post)
-    //     {
-    //         return $this->apiResponse($post ,200,'Ok');
-    //     }
-    //     else
-    //     {
-    //         return $this->apiResponse(null ,404,'Sorry Data Not Found');
-    //     }
-    // }
-
-    // Return Post Id Using Resource
-    public function show($id)
-    {
-        $post = $post = Post::find($id);
-        if($post)
-        {
-            return $this->apiResponse(new PostResource($post) ,200,'Ok');
-        }
-        else
-        {
-            return $this->apiResponse(null ,404,'Sorry Data Not Found');
-        }
-    }
+     // Return All Posts 
+     public function index()
+     {
+        return $this->Post->allpost();
+     }
+ 
+     // Return All Posts Using Resource
+     public function postsResource()
+     {
+         
+     }
+     
+     // Return One Post
+     public function show($id)
+     {
+        
+     }
+ 
+     // Return One Post Using Resource
+     public function postResource($id)
+     {
+         
+     }
+ 
+ 
+     // Store Data
+     public function store(Request $request)
+     {
+         
+     }
 }
